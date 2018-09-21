@@ -2,19 +2,15 @@ import React, { Component } from "react";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 import "./index.css";
 
-
-
 class App extends Component {
 
     state = {
-
         searchMessage:{
             text:''
         },
         newMessage:{
             name: ``,
             text:'',
-            id:''
         },
         showChangeInput: null,
         MirrorArray:[],
@@ -25,7 +21,6 @@ class App extends Component {
         changeMessage:'',
 
     }
-
 
     scrollToPosition = () =>{
         if(this.scrollToLastMessage === undefined){
@@ -85,16 +80,6 @@ class App extends Component {
                 newDayBar: false
             })
         }
-        /*for (let i = 0; i < 10000; i++){
-
-            var d = new Date(2018, 11, 24, 10, i)
-
-            list.push({
-                name: d,
-                text: `this is ${i} elementq qqqqq qqqqqqq qqqqqq qqqqqqq qqqqqqq qqqqq qqqqqqqq qqqqq qqqqqqq qqqqqq qqqqq qqqq`,
-                id: i
-            })
-        }*/
         this.setState({
             data: list,
             MirrorArray: list,
@@ -126,24 +111,13 @@ class App extends Component {
                 newMess.newDayBar = false
             }
         }
-        console.log(showBar)
-        console.log(this.state.MirrorArray[showBar].name.getDay())
-        console.log(newMess.name.getDay())
-        console.log(newMess)
         newMessageArray.push(newMess)
-        console.log(newMessageArray)
         this.setState({
             data: newMessageArray,
             MirrorArray: newMessageArray,
             scrollToLastMessage: this.state.data.length
 
         })
-        console.log(this.state.data)
-
-        /* newMirrorArray.push(this.state.newMessage)
-         this.setState({
-             MirrorArray: newMirrorArray
-         })*/
     }
     componentDidMount() {
         this.createdMessages()
@@ -159,9 +133,6 @@ class App extends Component {
     }
     constructor(props) {
         super(props);
-        this.setScrollIndex = evt => this.setState({index: evt.target.value})
-        this.setBodyRef = ref => this.bodyRef = ref
-        this.jumpToRow = () => this.bodyRef.scrollToRow(this.state.index)
         var cache = new CellMeasurerCache({
             defaultHeight: 100,
             fixedWidth: true,
@@ -223,12 +194,11 @@ class App extends Component {
             >
                 <div style={style} className='Row' >
 
-                    {
-                        data[index]. newDayBar
+                    {data[index]. newDayBar
                         ?
-                            <div>{ new Date().toDateString()}</div>
-                            :
-                            null
+                        <div>{ new Date().toDateString()}</div>
+                        :
+                        null
                     }
                     {data[index].showAvatar
                         ?
@@ -237,7 +207,7 @@ class App extends Component {
                         null
 
                     }
-                    <div>{data[index].name.toDateString() }</div> <span>{data[index].text}</span>
+                    <div>{data[index].name.toDateString() }</div> <span className='span-block'>{data[index].text}</span>
 
                     {showChangeInput === index ?
                         <div>
@@ -245,7 +215,6 @@ class App extends Component {
                                 className='wrap-input'
                                 type="text"
                                 placeholder="Сообщение..."
-                                /*name={MirrorArray.length.id}*/
                                 value={changeMessage}
                                 onChange={this.onChangeMessage}
                             />
@@ -280,7 +249,6 @@ class App extends Component {
                     ({ width, height }) => {
                         return <div>
                             <List
-                                /*overscanRowsCount= {10}*/
                                 ref = {this.setBodyRef}
                                 deferredMeasurementCache={this.cache}
                                 className='List'
@@ -293,11 +261,11 @@ class App extends Component {
                                 sortBy={()=>
                                 {
                                     this.list.forceUpdate();
-                                }
-                                }
+                                }}
                             />
                             <div className='user'>
                                 <input
+
                                     type="text"
                                     placeholder="Сообщение..."
                                     name='text'
@@ -312,12 +280,6 @@ class App extends Component {
                                     name='text'
                                     onChange={this.onSearch}
 
-                                />
-                                <p>показывать новые сообщения</p>
-                                <input
-                                    type='checkbox'
-                                    defaultChecked={CheckboxValue}
-                                    onChange={this.scrollToPosition}
                                 />
                             </div>
                         </div>

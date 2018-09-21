@@ -30,16 +30,13 @@ frameCount.fps = 0;
 frameCount(performance.now())
 console.log(frameCount.fps)
 
-/*
-* https://plnkr.co/edit/B1463DyuByuIlmWTynRn?p=preview
-* https://embed.plnkr.co/knQLm5NCog2Pvf1wWoMF/
-* */
+
+
 ReactDOM.render(
 
     <div className='wrap'>
         <App />
     </div>
-
 
     ,
     document.getElementById('root'));
