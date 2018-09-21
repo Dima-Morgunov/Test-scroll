@@ -1,0 +1,55 @@
+#root {
+  height: 100vh;
+}
+
+.row {
+  padding: 20px 0;
+}
+.List {
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.Row {
+  border-bottom: 1px solid black;
+  display: flex;
+  padding: 10px;
+  min-height: 50px;
+  box-sizing: border-box;
+}
+.wrap{
+  position: relative;
+  max-width: 600px!important;
+  width: 100%;
+  margin: 0 auto !important;
+  height: 600px;
+}
+.user{
+  width: 100%;
+  display: flex;
+}
+.user input{
+  display: block;
+}
+.wrap-input{
+  position: absolute;
+  right: 85px;
+  top: 5px;
+}
+.wrap-changeButton{
+  position: absolute;
+  right: 0;
+  top: 5px
+}
+.wrap-onchange{
+  positeion: absolute;
+}
+.image{
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+.span-block{
+  width: 100%;
+  padding: 0 65px 0 10px;
+}
